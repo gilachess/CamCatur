@@ -9,6 +9,14 @@
 
 ## Purpose
 
+> [!IMPORTANT]
+> **Phone-First Architectural Addendum (10 November 2026):**
+> Before implementing based on legacy desktop/webcam specifications in this research directory, refer to [`blueprint_addendum/`](../blueprint_addendum/), which establishes that:
+> - The smartphone is the primary vision and capture device (on-device recognition, local-first).
+> - CamCatur Management is OS-agnostic and browser-based (no mandatory Windows desktop client).
+> - Windows camera capture is not the baseline architecture.
+> - The addendum roadmap mandates feasibility spikes for mobile camera calibration, thermal/battery limits, and move validation before full implementation.
+
 This folder contains the product blueprint and Antigravity implementation guidance for building a new commercial chess tournament management and broadcasting platform inspired by the problem space addressed by ChessZCam. It is a new product and brand, not a re-skin or assumed derivative of ChessZCam.
 
 The platform combines:

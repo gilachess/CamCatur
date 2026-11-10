@@ -17,6 +17,19 @@
 
 ---
 
+## Architectural Addendum (Phone-First Direction)
+
+> **Important:** The [`blueprint_addendum/`](./blueprint_addendum/) establishes the phone-first, OS-agnostic architectural baseline for CamCatur (smartphone as primary camera/vision device, browser-based management, local-first inference) and takes precedence over conflicting legacy desktop/webcam assumptions.
+
+1. [Blueprint Addendum Overview](./blueprint_addendum/README_BLUEPRINT_ADDENDUM.md)
+2. [Product Vision (Phone-First)](./blueprint_addendum/PRODUCT_VISION.md)
+3. [Architecture Decisions (ADR-001 to ADR-010)](./blueprint_addendum/ARCHITECTURE_DECISIONS.md)
+4. [System Architecture](./blueprint_addendum/SYSTEM_ARCHITECTURE.md)
+5. [Initial Functional Requirements](./blueprint_addendum/FUNCTIONAL_REQUIREMENTS.md)
+6. [Development Roadmap & Spike Phases](./blueprint_addendum/DEVELOPMENT_ROADMAP.md)
+
+---
+
 ## Architecture & Blueprint
 
 Comprehensive architecture, schema specifications, and development roadmaps are detailed in the [`caturcam_research/`](./caturcam_research/) blueprint:
