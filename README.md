@@ -23,10 +23,11 @@
 
 1. [Blueprint Addendum Overview](./blueprint_addendum/README_BLUEPRINT_ADDENDUM.md)
 2. [Product Vision (Phone-First)](./blueprint_addendum/PRODUCT_VISION.md)
-3. [Architecture Decisions (ADR-001 to ADR-010)](./blueprint_addendum/ARCHITECTURE_DECISIONS.md)
+3. [Architecture Decisions (A-ADR-001 to A-ADR-010)](./blueprint_addendum/ARCHITECTURE_DECISIONS.md)
 4. [System Architecture](./blueprint_addendum/SYSTEM_ARCHITECTURE.md)
 5. [Initial Functional Requirements](./blueprint_addendum/FUNCTIONAL_REQUIREMENTS.md)
-6. [Development Roadmap & Spike Phases](./blueprint_addendum/DEVELOPMENT_ROADMAP.md)
+6. [Development Roadmap & Spike Stages](./blueprint_addendum/DEVELOPMENT_ROADMAP.md)
+7. [Research Review and Reconciliation](./blueprint_addendum/RESEARCH_REVIEW.md)
 
 ---
 

@@ -1,5 +1,7 @@
 # 07 — Google Antigravity Implementation Plan
 
+> **v1.3 amendment for agents:** Do **not** scaffold a Windows desktop shell, Tauri app, USB-webcam agent or native Kotlin operations app. Follow `blueprint_addendum/` (phone-first, browser Management, on-device recognition) and `blueprint_addendum/RESEARCH_REVIEW.md`. Where the stack list below disagrees, the addendum wins.
+
 ## 1. Development approach
 
 Use Antigravity as an AI-assisted engineering environment, not as a substitute for architecture, testing or code review.
@@ -11,7 +13,7 @@ Do not ask an agent to generate the entire platform in one prompt. Work in bound
 ## 2. Suggested repository structure
 
 ```text
-caturcam/
+camcatur/
   apps/
     web/
     windows-agent/
@@ -46,7 +48,7 @@ caturcam/
   README.md
 ```
 
-The requested research folder is `www/caturcam/research/`. The application repository can be structured separately; do not force source code into a web server's public document root. Keep private source and configuration outside any publicly served directory.
+The requested research folder is `www/catur.org/cam/caturcam_research/`. The application repository can be structured separately; do not force source code into a web server's public document root. Keep private source and configuration outside any publicly served directory.
 
 ## 3. Persistent project rules
 
@@ -117,14 +119,14 @@ Use this as the initial Antigravity project instruction:
 
 > You are the principal software architect and engineering coordinator for a new commercial chess tournament management and broadcasting platform.
 >
-> Target platforms are Windows, Android and web. Initial launch target is 50–100 simultaneous boards, with architecture and load testing for 200–250+ boards. Spectator scale is a separate workload.
+> Target platforms are web (management and public pages) and smartphones (Android first, iOS later) for vision capture. Initial launch target is 50–100 simultaneous boards, with architecture and load testing for 200–250+ boards. Spectator scale is a separate workload.
 >
 > Core product capabilities include multi-tenant organisations, tournament management, players, sections, rounds, pairings, results, standings, physical chessboard camera recognition, manual correction, live multi-board broadcasting, public tournament pages, PGN/FEN, OBS integration, sponsor graphics, white-label pages, analytics and SaaS billing.
 >
 > Preferred stack:
 > - Next.js, React and TypeScript.
-> - Tauri 2 + React for Windows.
-> - Kotlin + Jetpack Compose for Android.
+> - (Superseded) No Windows desktop shell.
+> - Vision app framework to be chosen by the phone spike; Arbiter app as a PWA.
 > - Python + FastAPI.
 > - PostgreSQL.
 > - NATS JetStream.
@@ -147,7 +149,7 @@ Use this as the initial Antigravity project instruction:
 3. Backend Engineer — FastAPI, PostgreSQL, identity and tournament domains.
 4. Computer Vision Engineer — capture, calibration, model evaluation and recognition.
 5. Realtime Engineer — NATS, WebSockets, replay and scaling.
-6. Desktop/Android Engineer — Tauri agent, native Android and device lifecycle.
+6. Mobile Engineer — CamCatur Vision app, camera lifecycle, on-device inference and device management.
 7. QA/Security Engineer — test automation, load, privacy and security review.
 
 These are logical roles. They do not need to be seven continuously running agents.

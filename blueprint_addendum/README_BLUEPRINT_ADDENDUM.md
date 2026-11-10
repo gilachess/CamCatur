@@ -17,6 +17,7 @@ These documents are an architectural addendum, not a claim that the original res
 3. `SYSTEM_ARCHITECTURE.md` — components, boundaries and data flow.
 4. `FUNCTIONAL_REQUIREMENTS.md` — initial functional and non-functional requirements.
 5. `DEVELOPMENT_ROADMAP.md` — staged validation and implementation plan.
+6. `RESEARCH_REVIEW.md` — reconciliation with the research folder: dispositions, conflicts, merged two-track plan, glossary and conventions (draft, pending founder review).
 
 ## Non-negotiable direction
 

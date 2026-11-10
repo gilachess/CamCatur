@@ -78,3 +78,18 @@ The following require experiments rather than optimistic claims:
 - Feasibility of a single cross-platform mobile framework for all target devices.
 - Venue Wi-Fi capacity for the expected number of phones.
 - Practical operator workload when several boards require manual correction.
+
+## 6. Requirements added from research reconciliation (proposed)
+
+| ID | Priority | Requirement |
+|---|---|---|
+| MS-001 | P0 | Manual game entry is a first-class MoveSource, always available as a fallback when vision is unavailable or uncertain. |
+| MS-002 | P1 | PGN/file import is supported as a MoveSource; other sources (e.g. electronic boards) attach through the same ingestion path. |
+| PUB-001 | P1 | A public live tournament page shows boards, results and standings. |
+| PUB-002 | P1 | A spectator can find a game by player name or board number ("find my board"). |
+| PUB-003 | P1 | Public move display honours a server-side delay that cannot be bypassed from public endpoints. |
+| PRV-001 | P1 | Player display supports full name, first name/initials, or hidden modes per tournament, with safe defaults for junior events. |
+| AUTH-001 | P0 | The server re-validates every candidate move and is authoritative for published state; phone state is provisional until acknowledged (R-ADR-009). |
+| MET-001 | P1 | The system records interventions per 100 confirmed moves, false-confirmation count and setup time per board. |
+| DEV-001 | P1 | Phone provisioning, reassignment and wipe between events is documented and testable. |
+| DEV-002 | P1 | Operators can see per-device battery, temperature (where available), charging and storage status. |

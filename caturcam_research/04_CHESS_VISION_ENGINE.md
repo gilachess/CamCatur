@@ -1,5 +1,7 @@
 # 04 — ChessVision Engine Specification
 
+> **v1.3 amendment:** Phone-first direction (`blueprint_addendum/`). Section 6 (cameras), section 9 (Windows process) and the section 11.1 hardware list are superseded; section 11.1 is rewritten for phones and section 12 adds phone-specific tests.
+
 > **v1.1 amendment:** Section 11 adds a mandatory feasibility spike that **precedes** engine build-out, clarifies the accuracy metrics, and adds a build-vs-license decision gate. The vision work no longer waits until Month 4.
 
 ## 1. Objective
@@ -77,7 +79,7 @@ Confidence thresholds must be calibrated empirically. Do not hard-code an arbitr
 
 The vision agent proposes; the cloud game service validates and commits.
 
-## 6. Camera support roadmap
+## 6. Camera support roadmap (v1.0; superseded: phone camera is the baseline, USB/RTSP are later alternatives behind a device interface)
 
 Initial:
 - USB webcams.
@@ -160,7 +162,7 @@ Proposed initial targets for supported test conditions:
 
 These are targets for testing, not existing performance claims. Report confidence intervals and dataset composition.
 
-## 9. Windows process architecture
+## 9. Windows process architecture (v1.0; superseded by on-device mobile architecture)
 
 - Tauri UI: configuration, previews, calibration and operator controls.
 - Python vision process: camera capture, inference and candidate generation.
@@ -191,7 +193,7 @@ When offline:
 Purpose: learn whether camera recognition can reach acceptable intervention rates on real hardware before committing roadmap and customers to it.
 
 Scope:
-- 2 camera types (one budget USB webcam, one better USB or RTSP camera).
+- At least 3 Android phone models (low, mid and high tier) and, if available, 1 iPhone for camera and lifecycle behaviour (A-ADR-007). A USB webcam may be included only as a comparison baseline.
 - 2 board/piece sets (e.g., one tournament-style, one club/school set).
 - 3 lighting conditions (bright, mixed, low).
 - At least 20 complete recorded games with ground-truth PGN, including castling, en passant and promotion.
@@ -221,3 +223,18 @@ The v1.0 targets in section 8 are retained but must be read as follows:
 
 ### 11.5 Alternative input: DGT electronic boards
 Evaluate DGT board integration as a MoveSource (doc 01 section 9.2). Record SDK/protocol availability, licensing, supported models, connectivity (USB/Bluetooth/serial), and customer ownership rates from interviews before committing.
+
+## 12. v1.3 Phone-first spike additions
+
+In addition to section 11, the spike must measure:
+
+1. **Sustained capture:** at least a 2-hour continuous run per device, with and without charging; record battery drain, temperature behaviour and throttling.
+2. **On-device inference:** per-frame latency and memory for each candidate runtime (TFLite, ONNX Runtime Mobile); fallback behaviour when a device is too slow.
+3. **Framework comparison:** native versus cross-platform camera preview latency and frame access (A-ADR-008).
+4. **Lifecycle:** screen lock, app backgrounding, incoming calls, permission prompts, and recovery of the active game after an app kill (A-ADR-004).
+5. **Calibration by a non-expert:** time and success rate, including manual corner adjustment and detection of a bumped board or phone.
+6. **Mounting and power practicality:** stand type, height, charger and cable management at a real table.
+7. **Setup time per board** and a rough estimate for 50 boards.
+8. **Server authority check:** confirm that the phone's candidate moves are re-validated server-side and that disagreement is surfaced (R-ADR-009).
+
+Exit report additions: a per-device compatibility table, a thermal/battery summary, the recommended framework and runtime with evidence, and a Go / Go with constraints / No-go decision for a Vision pilot (gates G1 and G2 in `blueprint_addendum/RESEARCH_REVIEW.md`).

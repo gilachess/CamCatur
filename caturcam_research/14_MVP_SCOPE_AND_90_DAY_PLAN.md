@@ -23,12 +23,12 @@ Run a real tournament end to end, in manual-entry mode, with a public live page 
 
 ## 3. Out of scope until a gate says otherwise
 
-Native Android, Windows agent product, DGT integration (evaluation only), billing automation, white-label domains, OBS/sponsor tooling, video recording/streaming, AI reports, analytics suite, NATS/Redis, iOS, custom pairing engine, 200+ board scaling.
+Native Android arbiter app, Windows desktop agent (superseded by phone-first), DGT integration (evaluation only), billing automation, white-label domains, OBS/sponsor tooling, video recording/streaming, AI reports, analytics suite, NATS/Redis, iOS, custom pairing engine, 200+ board scaling.
 
 ## 4. 90-day plan
 
 ### Days 1-30: Foundations and de-risking
-- Week 1: resolve D4; set up repo, CI, Docker Compose; start interviews; order/borrow spike cameras.
+- Week 1: resolve D4; set up repo, CI, Docker Compose; start interviews; borrow or buy spike phones and mounts.
 - Week 2: close D2 (CV licensing gate) and D5; competitor teardown; auth and organisations.
 - Week 3: positioning draft (D1); tenant isolation tests; tournament/section/player models.
 - Week 4: CV spike report v1; Gate A review; D3 and D6.
@@ -51,7 +51,7 @@ Native Android, Windows agent product, DGT integration (evaluation only), billin
 ## 5. Phase 2 decision
 
 After the pilot, choose one direction using evidence from the spike, pilot metrics and interviews:
-1. Camera MoveSource (Windows agent) if the spike is Go or Go with constraints.
+1. Camera MoveSource (CamCatur Vision phone app) if the phone spike is Go or Go with constraints.
 2. DGT MoveSource if ownership and demand are strong.
 3. Distribution/analytics/branding features if recognition is not viable.
 
@@ -71,3 +71,11 @@ After the pilot, choose one direction using evidence from the spike, pilot metri
 | Design partner unavailable | Line up two candidates by week 4 |
 | Scope creep | Scope rule in doc 08 section 7; weekly review |
 | Founder overload | Cut from the Phase 1 list before extending dates |
+
+## 8. v1.3 Two-track alignment with the phone-first addendum
+
+- **Track A (this plan):** platform, validation, manual-mode design-partner event.
+- **Track B (addendum Stages 1-2):** phone camera/calibration feasibility, then recognition feasibility, using the metrics in doc 04 sections 11-12.
+- **Gates:** G1 (week 4, calibration feasible on test phones), G2 (week 12, Go / Go with constraints / No-go for a Vision pilot), G3 (one-board end to end).
+- Track B does not delay Track A. If Track B fails, Track A still delivers a manual and PGN-based product.
+- Full merged schedule: `blueprint_addendum/RESEARCH_REVIEW.md` section 4. Naming: Phase 1-4 (this doc and doc 16), Stage 0-6 (addendum), V1-V4 (video).

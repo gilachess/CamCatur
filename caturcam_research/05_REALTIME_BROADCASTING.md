@@ -1,6 +1,6 @@
 # 05 — Realtime Broadcasting and Event Contracts
 
-> **v1.1 amendment:** Section 8 (added) sets Phase 1 transport and fan-out guidance consistent with doc 02 section 9. The event contract in this document is unchanged.
+> **v1.1 amendment:** Section 10 (added) sets Phase 1 transport and fan-out guidance consistent with doc 02 section 9. The event contract in this document is unchanged.
 
 ## 1. Objective
 
@@ -13,7 +13,7 @@ Game events, spectator connections and video streams are different workloads. Me
 ## 2. Event flow
 
 ```text
-WINDOWS AGENT OR MANUAL GAME INPUT
+VISION DEVICE (PHONE) OR MANUAL GAME INPUT
               |
               v
        AUTHENTICATED INGESTION

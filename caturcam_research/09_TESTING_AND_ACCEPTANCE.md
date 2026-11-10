@@ -101,9 +101,9 @@ Initial proposed target: confirmed move propagation P95 below one second under t
 
 | Failure | Expected behaviour |
 |---|---|
-| Internet outage | Windows agent buffers events and shows offline state |
-| UI crash | Local vision service/queue survives where configured |
-| Windows restart | Recover unacknowledged queue |
+| Internet outage | Vision device (phone) buffers events and shows offline state |
+| App crash or kill | Active game and event queue are recovered on restart |
+| Phone reboot | Recover unacknowledged queue |
 | Cloud API unavailable | Retry without losing local events |
 | Duplicate move | No duplicate state transition |
 | Out-of-order event | Hold/reject pending reconciliation |
@@ -139,3 +139,14 @@ Do not release a milestone until:
 - Failure and recovery behaviour is documented.
 - Operator fallback is understood.
 - Documentation is updated.
+
+## 10. v1.3 additions
+
+- **Delay-bypass test:** automated proof that public endpoints, overlays and caches never expose events before `public_release_at`.
+- **Authority test:** a phone-submitted candidate that the server judges illegal is rejected and surfaced, not published.
+- **Thermal and battery soak:** at least 2 hours of capture per device class; record throttling and drain (doc 04 s12).
+- **Phone lifecycle:** screen lock, backgrounding, call interruption and app kill with recovery.
+- **Cross-browser Management matrix:** Windows, macOS and Linux with current Chrome, Firefox and Edge (Safari on macOS), covering the core flows.
+- **Device reassignment:** unassign and reassign a phone without mixing game events.
+- **Usability tests:** at least 3 real arbiters/organisers per core flow in doc 15, with task time recorded.
+- **Addendum acceptance scenarios 1-8** (`FUNCTIONAL_REQUIREMENTS.md` s4) are release gates for any Vision pilot.

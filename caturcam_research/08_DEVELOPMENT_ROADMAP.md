@@ -204,10 +204,13 @@ Maintain a risk register and review it at every milestone.
 ### Added risks
 - No validated differentiator (mitigation: doc 13).
 - Solo-founder overload (mitigation: strict Phase 1 scope, weekly scope review).
-- Hardware logistics and on-site support cost (mitigation: doc 11 section 8).
+- Hardware logistics and on-site support cost (mitigation: doc 11 section 8A).
 - Reliance on AI-generated code without review (mitigation: tests-first on chess, event and tenant code).
 
 ### Governance
 - Weekly 30-minute review: progress vs plan, top 3 risks, scope changes. Record scope additions in the decision log.
 - **Scope rule:** nothing enters Phase 1 unless something of equal size leaves it.
 - Each phase ends with a demo to the design partner and a written go/no-go.
+
+### v1.3 note
+The Windows ChessVision Agent work in the long-term sequence above is replaced by the phone-first Vision track. See `14_MVP_SCOPE_AND_90_DAY_PLAN.md` section 8 and `blueprint_addendum/RESEARCH_REVIEW.md` section 4.

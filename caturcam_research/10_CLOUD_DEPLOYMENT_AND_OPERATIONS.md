@@ -144,3 +144,7 @@ Meter usage from the beginning:
 - Premium feature usage.
 
 Use these figures to set sustainable plan limits and pricing.
+
+## v1.3 note: deployment modes
+
+Phase 1 deploys in hosted mode only. The addendum's local-venue and hybrid modes (LAN server, queued external broadcast, later synchronisation) are deferred to Stage 5 and require explicit authority and conflict-resolution rules before production use.

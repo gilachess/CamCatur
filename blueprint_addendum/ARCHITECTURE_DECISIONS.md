@@ -3,9 +3,9 @@
 **Status:** Proposed baseline — decisions to be validated by technical spikes  
 **Date:** 10 November 2026
 
-This document takes precedence over conflicting legacy assumptions in the research until those documents are reviewed and reconciled.
+This document takes precedence over conflicting legacy assumptions about the capture device, recognition location and management client. Decision IDs use the prefix `A-ADR-`; the research log in `caturcam_research/12_DECISIONS_AND_OPEN_QUESTIONS.md` uses `R-ADR-`. The reconciliation with the research (scope, sequencing, authority, naming) is in `RESEARCH_REVIEW.md`.
 
-## ADR-001: Smartphone is the primary vision device
+## A-ADR-001: Smartphone is the primary vision device
 
 **Decision:** The primary camera and vision platform is a smartphone running CamCatur Vision.
 
@@ -15,7 +15,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - External webcams and Windows camera capture are not the baseline architecture.
 - Any future alternative capture device must integrate through a defined device interface rather than dictate the core architecture.
 
-## ADR-002: Management is a browser-based application
+## A-ADR-002: Management is a browser-based application
 
 **Decision:** CamCatur Management is a web application accessible from supported browsers on Windows, macOS and Linux.
 
@@ -25,7 +25,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Keep operating-system-specific functionality out of the management domain.
 - Document browser support and test on representative browsers and operating systems.
 
-## ADR-003: Recognition is local-first
+## A-ADR-003: Recognition is local-first
 
 **Decision:** Perform camera capture and the primary recognition pipeline on the phone wherever feasible.
 
@@ -35,7 +35,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Benchmark mobile inference speed, memory, thermal behaviour and battery consumption.
 - If a recognition task proves unsuitable for a phone, isolate it behind an interface so a server-assisted implementation can be evaluated without redesigning the whole product.
 
-## ADR-004: Offline-tolerant capture and synchronisation
+## A-ADR-004: Offline-tolerant capture and synchronisation
 
 **Decision:** The phone must persist game events locally and synchronise them when connectivity is restored.
 
@@ -45,7 +45,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - The phone must expose pending, synced and failed event counts.
 - Conflict and recovery rules must be explicit; do not silently overwrite a corrected game state.
 
-## ADR-005: Recognition output is provisional until validated
+## A-ADR-005: Recognition output is provisional until validated
 
 **Decision:** A vision result is a candidate observation, not automatically a trusted chess move.
 
@@ -56,7 +56,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Provide manual correction, move rejection and resynchronisation workflows.
 - Handle captures, castling, en passant, promotion, illegal positions, hand occlusion and pieces being replaced.
 
-## ADR-006: Separate the vision, chess-domain and management layers
+## A-ADR-006: Separate the vision, chess-domain and management layers
 
 **Decision:** Use explicit component boundaries and versioned contracts.
 
@@ -67,7 +67,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Management owns tournament entities, assignments, permissions, review and broadcast orchestration.
 - Components can be replaced or improved independently.
 
-## ADR-007: Android-first, iOS-next — subject to validation
+## A-ADR-007: Android-first, iOS-next — subject to validation
 
 **Decision:** Plan Android as the first mobile target, then iOS. Do not treat this as proof that one framework will work equally well on both.
 
@@ -77,7 +77,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Keep platform-specific camera/inference adapters behind interfaces.
 - Revisit this decision if device availability, performance or deployment requirements favour another sequence.
 
-## ADR-008: No premature commitment to a mobile framework or ML runtime
+## A-ADR-008: No premature commitment to a mobile framework or ML runtime
 
 **Decision:** React Native, native Kotlin/Swift, OpenCV, TensorFlow Lite and ONNX Runtime Mobile are candidates, not final mandates.
 
@@ -87,7 +87,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Choose based on measured prototype results, not familiarity alone.
 - Keep the recognition model and inference runtime replaceable.
 
-## ADR-009: Scale claims require evidence
+## A-ADR-009: Scale claims require evidence
 
 **Decision:** Design data structures and services to support growth, but make no production-scale claim until measured.
 
@@ -97,7 +97,7 @@ This document takes precedence over conflicting legacy assumptions in the resear
 - Measure event throughput, latency, reconnection behaviour, server resource use and operator usability.
 - Treat 100–300 simultaneous boards as a scale objective, not an MVP acceptance claim.
 
-## ADR-010: Network transport is abstracted
+## A-ADR-010: Network transport is abstracted
 
 **Decision:** Support local network and internet deployments through a documented communication layer.
 

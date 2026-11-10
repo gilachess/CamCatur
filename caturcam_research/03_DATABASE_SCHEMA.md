@@ -168,3 +168,7 @@ Keep a durable archive/export path for completed tournaments. Do not delete even
 - Prefer expand/migrate/contract changes for zero- or low-downtime deployment.
 - Back up before destructive changes.
 - Test migrations against representative staging data.
+
+## v1.3 note: tables to reconcile with the addendum
+
+Verify and add as needed (see `blueprint_addendum/SYSTEM_ARCHITECTURE.md` s7): `devices`, `device_pairings`, `device_assignments`, `game_events` (per-game unique `(game_id, sequence)` and `event_id` idempotency key), `game_corrections`, `sync_batches`, `audit_logs`. Keep original event history immutable; corrections append.

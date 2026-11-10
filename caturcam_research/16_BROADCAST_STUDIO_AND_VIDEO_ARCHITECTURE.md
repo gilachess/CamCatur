@@ -65,6 +65,8 @@ Potential sources:
 - Venue or commentary camera.
 - Previously recorded, authorised media asset.
 
+**Phones are not video sources by default.** CamCatur Vision phones process frames on-device and must not stream continuous video by default (A-ADR-003). Using a phone as a Studio camera is a separate, explicit opt-in with its own consent, bandwidth and cost treatment.
+
 Each source should have a stable internal ID and metadata for organisation/tournament ownership, source type, assigned venue/board/role, connection health, preview availability, audio availability, resolution/frame rate where known, permission status and recording status.
 
 Protect stream credentials. Never expose them in public pages, browser URLs, logs or client-side configuration. Use an appropriate server-side secret store or protected local credential store.
@@ -193,12 +195,12 @@ Chessboard footage can still reveal identities or other personal information; do
 
 | Stage | Scope | Exit condition |
 |---|---|---|
-| Phase 1 — CamCatur Live MVP | Tournament operations, manual moves, 2D public broadcast, delay, PGN, arbiter PWA | A real organiser can run and publish a tournament reliably |
-| Phase 2 — Production discovery | Interview operators; test OBS Browser Source overlay and one or two camera inputs; document workflow and cost | Customer need and a repeatable pilot are evidenced |
-| Phase 3 — Studio beta | Selected camera sources, featured-game overlay, scene presets, operator controls and one programme output through OBS or validated integration | Successful event pilot with measured reliability, consent and unit economics |
-| Phase 4 — Native Studio evaluation | Decide whether native composition, encoding, recording and destination management are justified | Explicit decision supported by demand and cost/maintenance comparison |
+| V1 (= Product Phase 1) — CamCatur Live MVP | Tournament operations, manual moves, 2D public broadcast, delay, PGN, arbiter PWA | A real organiser can run and publish a tournament reliably |
+| V2 — Production discovery | Interview operators; test OBS Browser Source overlay and one or two camera inputs; document workflow and cost | Customer need and a repeatable pilot are evidenced |
+| V3 — Studio beta | Selected camera sources, featured-game overlay, scene presets, operator controls and one programme output through OBS or validated integration | Successful event pilot with measured reliability, consent and unit economics |
+| V4 — Native Studio evaluation | Decide whether native composition, encoding, recording and destination management are justified | Explicit decision supported by demand and cost/maintenance comparison |
 
-Do not start Phase 3 until Phase 1 is stable and Phase 2 validates the production need.
+Do not start V3 until V1 is stable and V2 validates the production need. (V1-V4 are video stages; they are distinct from addendum Stages 0-6.)
 
 ## 14. Interfaces to preserve
 
@@ -231,7 +233,7 @@ Keep the initial game and tournament domain independent of these media component
 ## 16. Proposed decision records
 
 ```text
-Decision ID: ADR-005
+Decision ID: R-ADR-005
 Topic: Separate chess broadcast and video media architecture
 Status: Proposed
 Decision: Keep confirmed chess-event distribution independent from video
@@ -243,7 +245,7 @@ Revisit trigger: Production discovery and a real event pilot.
 ```
 
 ```text
-Decision ID: ADR-006
+Decision ID: R-ADR-006
 Topic: Initial video production integration
 Status: Proposed
 Decision: Evaluate OBS Studio with CamCatur browser overlays before building

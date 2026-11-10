@@ -13,7 +13,7 @@ The product should be designed as five connected applications:
 | Product | Platform | Primary users | Main purpose |
 |---|---|---|---|
 | Tournament Control Centre | Web | Organisers, administrators | Manage organisations, events, players, rounds, pairings and results |
-| ChessVision Agent | Windows | Camera operators | Connect cameras, calibrate boards, recognise moves and buffer events offline |
+| CamCatur Vision | Android first, iOS later (phone-first, see `blueprint_addendum/`) | Camera operators, arbiters | Place and calibrate the phone, recognise moves on-device, buffer events offline and synchronise |
 | CamCatur Mobile | Android | Arbiters, organisers | Monitor boards, correct games, submit results and receive alerts |
 | CamCatur Live | Web/mobile browser | Players, families, spectators | Interactive 2D boards, move lists, player/game information, standings and tournament pages |
 | CamCatur Studio | Web/Windows integrations (later phase) | Commentators, production operators | Combine selected physical camera feeds, confirmed 2D chess graphics, tournament information, commentary and sponsor graphics into a programme output |
@@ -37,7 +37,7 @@ Studio and Video are not part of the Phase 1 MVP.
 ## 3. Platform decisions
 
 ### Windows
-Primary camera and computer-vision station. Supports USB webcams and IP/RTSP cameras, board calibration, board assignment, local recognition, diagnostics, offline event buffering and recovery.
+Superseded as the capture baseline. In the v1.0 design Windows was the primary camera and vision station. Under the phone-first direction (A-ADR-001, A-ADR-002), Windows is a browser client for Management. Windows camera capture may return later as an alternative device type behind the device interface.
 
 ### Android
 Native operations companion. Supports tournament and board monitoring, manual corrections, results, player lookup, QR scanning, notifications and selected administrative actions. It is not initially a replacement for the Windows vision station.
@@ -150,7 +150,7 @@ See document 16.
 - Secure multi-tenancy.
 - High data integrity for moves and results.
 - Reconnect and replay after temporary outages.
-- Offline-capable Windows agent.
+- Offline-capable vision device (phone) with a local durable event queue.
 - Observable services and structured logs.
 - Backups and restore tests.
 - Accessibility and responsive web layouts.
@@ -168,6 +168,19 @@ See document 16.
 6. Spectator delivery must not depend on the organiser dashboard staying open.
 7. Organisations own their tournament data, subject to contract and applicable law.
 8. Design for 200+ boards, but operate only the infrastructure needed for current customers.
+
+## 8. v1.3 Phone-first alignment
+
+The product surfaces in section 1 are reinterpreted as follows (see `blueprint_addendum/RESEARCH_REVIEW.md` for the glossary):
+
+| v1.0 surface | v1.3 surface |
+|---|---|
+| ChessVision Agent (Windows) | **CamCatur Vision** (phone) |
+| Tournament Control Centre (Web) | **CamCatur Management** (browser; any OS) |
+| CamCatur Mobile (Android) | **CamCatur Arbiter** (PWA first) |
+| CamCatur Live, Video, Studio | Unchanged (Video/Studio future, see doc 16) |
+
+Capture-device and recognition-location decisions are governed by A-ADR-001 to A-ADR-003. Scope, sequencing and validation remain governed by docs 13-15.
 
 ## 9. v1.1 amendments
 
@@ -189,7 +202,7 @@ Game input is a pluggable **MoveSource**, not a camera feature. All sources subm
 | Manual entry (web/PWA) | 1 | Baseline; always available as fallback |
 | PGN/file import | 1 | Pairing/result import and game archives |
 | DGT electronic board | 2 (evaluate) | Existing hardware, lowest recognition risk; verify SDK/protocol terms |
-| Camera (ChessVision Agent) | 2-3, gated by feasibility spike | See doc 04 |
+| Camera (CamCatur Vision, phone) | 2-3, gated by phone feasibility spike | See doc 04 and `blueprint_addendum/` |
 | Third-party feeds | Later | Adapters only |
 
 ### 9.3 Product success metrics
@@ -204,9 +217,9 @@ Define and instrument from the first pilot:
 
 ### 9.4 Requirement tiering
 - **MVP (Phase 1):** organisation/auth, tournament/sections/rounds/players, pairing import, manual game entry, public live page with find-my-board search, PGN export, server-side delay, arbiter PWA, audit trail.
-- **Phase 2:** camera feasibility result, ChessVision Agent beta, offline queue, exception triage, DGT evaluation, Lichess broadcast adapter.
+- **Phase 2:** camera feasibility result, CamCatur Vision beta, offline queue, exception triage, DGT evaluation, Lichess broadcast adapter.
 - **Later:** native Android, billing automation, white-label domains, advanced OBS/Studio controls, sponsor suite, multi-source video production, video recording/streaming, AI reports and analytics.
 - **Production discovery (after Phase 1 live workflow is stable):** validate OBS browser overlays and selected camera inputs with real organisers and operators. This is discovery, not a commitment to build a native compositor.
 
 ### 9.5 Hardware and venue assumptions to document
-Camera model(s), mount type and height, board size, lighting, network at venue, who supplies hardware, and who provides on-site support. See doc 11 section 8.
+Phone model(s) and camera capability, mount type, height and power/charging, board size, lighting, network at venue, who supplies hardware, and who provides on-site support. See doc 11 section 8A.

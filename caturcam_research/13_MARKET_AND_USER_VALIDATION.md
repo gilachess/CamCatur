@@ -35,6 +35,8 @@ Target 8-12 interviews: organisers, arbiters, school/club coordinators, parents 
 6. What hardware do you already own?
 7. What would you pay for, and what do you pay today?
 8. What would make you unwilling to switch?
+9. Would you place phones on tables as cameras? Whose phones, who charges and supervises them, and what worries you?
+10. How would parents, players and the venue react to a camera over each board? What consent do you already collect?
 
 ### Record per interview
 Segment, event size, tools used, top 3 pain points (verbatim), hardware owned, budget signal, willingness to pilot, consent status.
@@ -45,7 +47,7 @@ Segment, event size, tools used, top 3 pain points (verbatim), hardware owned, b
 - Jobs-to-be-done statements for arbiter, organiser, spectator/parent.
 - Pairing-software import requirement (doc 12 D5).
 - DGT ownership rate and demand signal (doc 12 D3).
-- Willingness-to-pay ranges to feed the unit-economics sheet (doc 11 section 8).
+- Willingness-to-pay ranges to feed the unit-economics sheet (doc 11 section 8A).
 
 ## 5. Validation gates
 - **Gate A (Month 1 end):** at least 8 interviews, competitor teardown, positioning draft.

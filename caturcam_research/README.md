@@ -1,9 +1,9 @@
 # CamCatur Research — Commercial Chess Tournament Platform Blueprint
 
-**Document set:** Product and technical blueprint v1.1 (supersedes v1.0 where noted)  
+**Document set:** Product and technical blueprint v1.3 (supersedes v1.0 where noted)  
 **Date:** 10 November 2026  
 **Official brand:** CamCatur  
-**Target platforms:** Windows, Android, Web  
+**Target platforms:** Web (management, public), smartphones (Android first, iOS later) for vision capture; Windows only as a browser client (and optional production workstation for OBS)  
 **Initial broadcast scale:** 50–100 boards  
 **Expansion design target:** 200–250+ boards, with spectator scale tested separately
 
@@ -47,6 +47,14 @@ The platform combines:
 14. `14_MVP_SCOPE_AND_90_DAY_PLAN.md` (v1.1)
 15. `15_USER_FLOWS_AND_VENUE_UX.md` (v1.1)
 16. `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md` (v1.2 — Future architecture for CamCatur Video and CamCatur Studio, including OBS overlay integration, programme composition, external streaming, synchronisation, recording, privacy and media economics)
+
+## v1.3 changes (10 November 2026): reconciliation with the phone-first addendum
+
+- Added `../blueprint_addendum/RESEARCH_REVIEW.md`: dispositions for every Windows/webcam assumption, conflicts and resolutions, merged two-track plan, glossary and conventions.
+- Superseded the Windows ChessVision Agent, Tauri shell and USB-webcam baseline in docs 01, 02, 04, 05, 06, 07, 09, 11, 12, 14 and 15 with phone-first equivalents.
+- Decision IDs are now `R-ADR-` (this folder) and `A-ADR-` (addendum). R-ADR-007 to R-ADR-009 added.
+- Product phases remain Phase 1-4; addendum engineering stages are Stage 0-6; video stages are V1-V4.
+- Fixed numbering errors in docs 01, 05, 11 and 12.
 
 ## v1.2 changes (10 November 2026)
 

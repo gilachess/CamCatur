@@ -8,7 +8,7 @@
 |---|---|---|
 | Chief arbiter | Standing, on phone/tablet, time-pressured, noisy room, unreliable Wi-Fi | Know what needs attention now; fix quickly; never lose data |
 | Organiser | Before/after rounds, laptop | Set up fast, publish confidently, report to sponsors/federation |
-| Camera operator (Phase 2) | At a PC, many boards | Fast calibration, clear status, minimal babysitting |
+| Vision device operator (Phase 2) | Management app on laptop/tablet; phones on tables; many boards | Fast calibration, clear status, minimal babysitting |
 | Parent/spectator | Phone, often outside the hall | Find child's game in seconds; follow moves; know the result |
 | Player | Phone/laptop afterwards | Replay, PGN, standing |
 
@@ -29,10 +29,10 @@
 4. Publish; copy public link and QR code.
 **Success:** a new organiser reaches a publishable page without help. Measure time and errors.
 
-### F2. Venue setup at scale (Phase 1 manual; Phase 2 cameras)
+### F2. Venue setup at scale (Phase 1 manual; Phase 2 phones)
 1. Print board labels with QR codes and board numbers.
 2. Arbiter devices scan a board to attach to a pairing; mismatches are flagged.
-3. (Phase 2) Camera operator batch-assigns cameras, runs calibration, and sees a status wall: not set up / calibrating / ready / needs recalibration.
+3. (Phase 2) Operator pairs phones, batch-assigns them to boards, runs guided calibration, checks battery/charging/temperature, and sees a status wall: not set up / calibrating / ready / needs recalibration.
 4. Pre-round readiness check: all boards assigned, all devices online, delay set.
 **Success:** time to ready 50 boards, tracked per event.
 

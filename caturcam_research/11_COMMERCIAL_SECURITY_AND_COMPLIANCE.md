@@ -148,13 +148,13 @@ Before commercial release:
 - Status/incident communication.
 - Backup and disaster recovery plan.
 - Customer onboarding documentation.
-- Windows agent installation guide.
+- Vision app installation, device provisioning and reassignment guide.
 - Camera compatibility guide.
 - Tournament operator guide.
 - Security contact and vulnerability handling.
 - Release and rollback process.
 
-## 8. v1.1 Hardware, services and unit economics
+## 8A. v1.1 Hardware, services and unit economics
 
 The pricing in section 2 covers software only. Per-event economics must include:
 - **Hardware:** cameras, mounts/stands, cables, PC or mini-PC per operator station, spare units, labels.
@@ -170,6 +170,13 @@ Create a per-event unit-economics sheet (revenue, hardware amortisation, support
 Track camera-hours and source bitrate; media ingest and processing cost; simultaneous programme outputs; recording hours and retained storage; viewer-hours and delivery/egress; production workstation hardware/network; and production operator/support hours.
 
 Do not price video solely by board count. One composed tournament programme using selected cameras has a different cost profile from one independent video stream per board. Recording and public streaming may need separate entitlements or event charges.
+
+### 8A.1 v1.3 Phone fleet costing
+- Phones (per board plus spares), mounts/stands, chargers, cables and power distribution.
+- Provisioning, wiping and reassigning phones between events.
+- Device loss, damage and theft; replacement stock.
+- Rental versus customer-owned versus participant-owned models (participant phones raise consent and reliability issues).
+- Compare per-board hardware cost with a webcam-based alternative before publishing prices.
 
 ## 9. v1.1 Safeguarding and privacy (junior events)
 

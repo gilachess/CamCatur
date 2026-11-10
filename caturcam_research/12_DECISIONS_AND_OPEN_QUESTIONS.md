@@ -17,7 +17,7 @@
 | Web role | Organiser control centre and spectator site |
 | Development environment | Google Antigravity |
 | AI subscription | Google AI Pro |
-| Documentation location | `www/caturcam/research/` |
+| Documentation location | `www/catur.org/cam/caturcam_research/` |
 | Chess/video separation | Confirmed game-event distribution remains independent from video ingest, recording and programme delivery |
 | Studio authority | Studio consumes confirmed game state; it cannot authorise or alter chess moves |
 | Initial production validation | Evaluate OBS browser overlays and selected camera inputs before considering a native compositor |
@@ -26,9 +26,9 @@
 ## 2. Recommended technical direction (subject to implementation validation)
 
 - Next.js, React and TypeScript.
-- Tauri 2 + React Windows shell.
-- Separate Python/OpenCV vision process.
-- Kotlin and Jetpack Compose Android.
+- (Superseded by A-ADR-002) No Windows desktop shell.
+- (Revised by A-ADR-003) On-device recognition on the phone; Python/OpenCV for tooling and training.
+- (Revised by R-ADR-002) Arbiter app as a PWA; Vision app framework chosen by spike (A-ADR-008).
 - FastAPI backend.
 - PostgreSQL.
 - NATS JetStream.
@@ -61,40 +61,42 @@ After Phase 1 is stable:
 - Video consent, retention and unit-economics validation.
 - Decide whether native CamCatur Studio is justified.
 
-## 3A. v1.1 blocking decisions (resolve in week 1-2)
+## 3A. v1.1 blocking decisions (resolve in weeks 1-4)
 
 | # | Decision | Owner | Due | Linked doc |
 |---|---|---|---|---|
 | D1 | Primary customer segment and positioning statement | Founder | Week 3 | 01 s9.1, 13 |
 | D2 | CV build vs license vs no-camera | Founder + legal | Week 2 | 04 s11.3 |
 | D3 | DGT support: evaluate or exclude | Founder | Week 4 | 04 s11.5 |
-| D4 | First camera model(s) and mount for the spike | Founder | Week 1 | 04 s11.1 |
+| D4 | Test phones (low/mid/high Android; an iPhone if available), mounts and power for the spike | Founder | Week 1 | 04 s11.1, s12 |
 | D5 | Pairing source: which software to import from | Founder | Week 2 | 13 |
 | D6 | Design partner event and date | Founder | Week 4 | 14 |
+| D7 | Phone supply model: rental fleet, customer-owned or participant phones | Founder | Week 4 | 11 s8A.1 |
+| D8 | Accept, amend or reject the phone-first reconciliation (RESEARCH_REVIEW.md) | Founder | Week 1 | `blueprint_addendum/RESEARCH_REVIEW.md` |
 
 ## 3B. v1.1 and v1.2 decision log entries
 
 ```text
-Decision ID: ADR-001   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-001   Date: 2026-11-10   Status: Proposed
 Topic: Phase 1 stack simplification
 Decision: Postgres-only eventing behind an EventBus interface; defer NATS and Redis.
 Reason: Estimated 2-3 events/s at 100 boards; operational burden of JetStream not justified yet.
 Revisit trigger: consumer lag, replay needs or load-test failure.
 
-Decision ID: ADR-002   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-002   Date: 2026-11-10   Status: Proposed
 Topic: Arbiter app platform
 Decision: PWA first; native Android deferred.
 Revisit trigger: pilot users require native-only features (background scanning, reliable push).
 
-Decision ID: ADR-003   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-003   Date: 2026-11-10   Status: Proposed
 Topic: Vision sequencing
 Decision: 4-week feasibility spike precedes Phase 2 commitments; Go/No-go gate.
 
-Decision ID: ADR-004   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-004   Date: 2026-11-10   Status: Proposed
 Topic: MoveSource abstraction
 Decision: All input (manual, PGN, DGT, camera) enters through one authoritative ingestion path.
 
-Decision ID: ADR-005   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-005   Date: 2026-11-10   Status: Proposed
 Topic: Separate chess broadcast and video media architecture
 Decision: Keep confirmed chess-event distribution independent from video
           ingest, media storage, programme composition and external streaming.
@@ -103,7 +105,7 @@ Impact: Studio consumes confirmed game state through a presentation interface;
         it does not become authoritative for moves.
 Revisit trigger: Production discovery and a real event pilot.
 
-Decision ID: ADR-006   Date: 2026-11-10   Status: Proposed
+Decision ID: R-ADR-006   Date: 2026-11-10   Status: Proposed
 Topic: Initial video production integration
 Decision: Evaluate OBS Studio with CamCatur browser overlays before building
           a native compositor or encoder.
@@ -111,6 +113,30 @@ Reason: Validate operator workflows and willingness to pay before assuming
         the engineering and support burden of production software.
 Impact: OBS remains an optional external production tool during the pilot.
 Revisit trigger: Customer evidence shows limitations that justify native Studio.
+
+Decision ID: R-ADR-007   Date: 2026-11-10   Status: Proposed
+Topic: Adopt phone-first capture as the vision baseline
+Decision: CamCatur Vision on smartphones is the baseline; Windows agent, Tauri shell and
+          USB-webcam capture are superseded (see A-ADR-001, A-ADR-002, A-ADR-003).
+Reason: Lower hardware barrier, no desktop dependency, OS-agnostic management.
+Impact: Docs 01, 02, 04, 05, 06, 07, 09, 11, 14, 15 revised; spike rewritten for phones.
+Revisit trigger: Gate G1/G2 results (thermal, battery, accuracy, lifecycle).
+
+Decision ID: R-ADR-008   Date: 2026-11-10   Status: Proposed
+Topic: Two-track plan
+Decision: Track A (manual-mode platform, validation, design-partner event) runs in parallel
+          with Track B (phone feasibility, addendum Stages 1-2); merge at gates G1-G3.
+Reason: Avoid delaying customer contact and revenue while the highest-risk work is proven.
+Impact: doc 14 section 8; addendum roadmap stages renamed.
+Revisit trigger: Gate G1 failure or founder capacity limits.
+
+Decision ID: R-ADR-009   Date: 2026-11-10   Status: Proposed
+Topic: Server authority with provisional phone state
+Decision: Phones emit candidate events and keep provisional local state; the server
+          re-validates and is authoritative for published state.
+Reason: Preserves auditability, delay enforcement and correction workflows (doc 05 s5).
+Impact: Event acknowledgements, correction flow, offline reconciliation rules.
+Revisit trigger: Local-venue/hybrid deployment design (Stage 5).
 ```
 
 ## 4. Open decisions to resolve before implementation
@@ -207,3 +233,7 @@ Status:
 8. Tournament rules and fair-play implications.
 9. Scope expansion before the core workflow is stable.
 10. Over-reliance on AI-generated code without tests and review.
+
+## 7. v1.3 note: decision ID prefixes
+
+Research decisions use `R-ADR-nnn` (this file and doc 16). Addendum decisions use `A-ADR-nnn` in `blueprint_addendum/ARCHITECTURE_DECISIONS.md`. Do not use bare `ADR-nnn`.

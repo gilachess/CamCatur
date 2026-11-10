@@ -1,5 +1,7 @@
 # 02 — System Architecture
 
+> **v1.3 amendment:** The Windows vision path (section 4), Tauri shell and desktop inference rows below are **superseded** by the phone-first direction (`blueprint_addendum/`). Section 10 summarises the deltas. Where this document conflicts with the addendum on capture device, recognition location or management client, the addendum wins.
+
 > **v1.1 amendment:** Section 9 defines a **Phase 1 simplified stack**. NATS JetStream, Redis, Terraform-managed multi-service deployment and the native Android app are deferred until measured load or a decision-log entry justifies them. Sections 1-8 remain the long-term target.
 
 ## 1. Architecture principles
@@ -23,11 +25,11 @@
 | Web | Next.js, React, TypeScript | Organiser and public web applications |
 | UI | Tailwind CSS, shadcn/ui or equivalent | Shared design system |
 | Chess UI/core | chessops or another reviewed rules library | Verify licence and API suitability |
-| Windows shell | Tauri 2 + React | Native desktop shell |
-| Vision service | Python, OpenCV | Separate process/service from UI |
+| ~~Windows shell~~ | ~~Tauri 2 + React~~ | Superseded: no mandatory desktop client (A-ADR-002) |
+| Vision tooling | Python, OpenCV | Training, labelling and offline tooling; production inference is on-device (A-ADR-003); server-assisted fallback only behind an interface |
 | Model training | PyTorch | Review code, model and dataset licences |
-| Model inference | ONNX Runtime | Windows deployment option; verify package licence |
-| Android | Kotlin, Jetpack Compose | Native operations app |
+| Model inference | TFLite / ONNX Runtime Mobile (candidates) | On-device; choose by measured spike (A-ADR-008); verify licences |
+| Mobile | Vision app: framework by spike (A-ADR-007/008); Arbiter app: PWA first | Replaces native Kotlin ops app for Phase 1 |
 | Backend | Python, FastAPI, Pydantic | Modular API |
 | Database | PostgreSQL | Authoritative application data |
 | Event streaming | NATS JetStream | Durable events, replay, consumers |
@@ -45,7 +47,7 @@ These are recommendations, not irreversible decisions. Pin versions and review c
 
 ```text
 CLIENTS
-  Windows Agent       Android App       Web Applications
+  Vision App (phone)  Arbiter PWA        Web Applications
        |                  |                    |
        +------------------+--------------------+
                           |
@@ -91,7 +93,7 @@ Physical camera --> Media source/ingest --------------+
 
 Do not route video through the game-event pipeline. Do not make the game service depend on OBS, a media encoder or a streaming destination. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.
 
-## 4. Windows vision path
+## 4. Windows vision path (v1.0 design, superseded by phone-first; retained for reference)
 
 ```text
 USB / RTSP CAMERA
@@ -203,7 +205,7 @@ Estimated chess event load at 100 boards, one move per ~45 seconds per board, is
 | Spectator realtime | SSE or managed pub/sub behind CDN, with snapshot + last-seen-sequence resync | WebSocket features needed; test connection limits |
 | Cache | In-process / HTTP cache + CDN; add Redis only on measured need | Measured DB read pressure |
 | Arbiter app | Installable PWA (offline-tolerant manual entry, push where supported) | Native-only features required by pilot users |
-| Windows agent | Phase 2, gated by CV spike (doc 04 section 11) | n/a |
+| CamCatur Vision (phone) | Phase 2, gated by phone spike (doc 04 sections 11-12) | n/a |
 | Infra as code | Docker Compose + minimal scripted deploy | Second environment or team grows |
 
 ### 9.3 Design rules that survive the simplification
@@ -212,8 +214,17 @@ Estimated chess event load at 100 boards, one move per ~45 seconds per board, is
 - Public spectator pages must be cacheable and must not hit the primary database per viewer.
 - Record each deferral and its trigger metric in the decision log (doc 12).
 
-### 9.4 Runtime count for the Windows agent (Phase 2)
-Tauri + Python sidecar + ONNX Runtime is three runtimes for one solo developer. During the CV spike, evaluate a simpler alternative (single Python process with a local web UI, or a single-language agent) and choose based on installer reliability on target Windows machines, not on architectural elegance.
+### 9.4 Runtime and framework count for the Vision app (Phase 2)
+A native app plus a separate inference runtime plus a model conversion pipeline is a large surface for one developer. During the phone spike, compare native (Kotlin/Swift) against a cross-platform framework on measured camera latency, thermal behaviour and inference speed, and choose on evidence (A-ADR-008), not familiarity.
 
 ### 9.5 Video and production exclusions
 Video, OBS integration, recording and native composition are excluded from Phase 1. CamCatur Live delivers structured chess events to interactive 2D browser views only. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.
+
+## 10. v1.3 Phone-first deltas
+
+- **Authority:** the phone emits candidate events and keeps **provisional** local state; the server re-validates and is authoritative for published state (R-ADR-009). Phone state becomes official only after server acknowledgement.
+- **Device registry and pairing:** devices pair with short-lived codes and receive per-device credentials; add `devices`, `device_pairings`, `device_assignments` and `sync_batches` to the schema (doc 03 s-note).
+- **Event envelope:** align doc 05 fields with the addendum envelope (`event_id`, `device_id`, `game_session_id`, `sequence`, `captured_at`, `schema_version`).
+- **Phase 1 stays hosted** (section 9). Local-venue and hybrid deployment modes from the addendum are deferred to Stage 5 and need explicit authority and conflict rules first.
+- **Management** remains the browser app (Next.js); no desktop client.
+- **Video:** phones are not video sources by default (A-ADR-003; see doc 16 section 5).

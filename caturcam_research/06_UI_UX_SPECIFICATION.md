@@ -123,7 +123,7 @@ Recommended layout:
 
 Spectators should be able to open a game, replay moves, copy/download PGN and share a direct URL.
 
-## 7. Windows ChessVision Agent screens
+## 7. Windows ChessVision Agent screens (v1.0; superseded by CamCatur Vision phone screens, see section 11 item 10)
 
 - First-run setup and device registration.
 - Camera discovery.
@@ -203,3 +203,6 @@ Create reusable components:
 7. **Degraded-state UX:** every operational screen needs explicit states for offline, delayed, stale (time since last update), and uncertain data, never relying on colour alone.
 8. **Usability testing:** each flow in doc 15 must be tested with at least 3 real arbiters/organisers before it is declared done, with task-completion time recorded.
 9. **Phase 1 arbiter app is a PWA** (see doc 02). Native Android screens in section 8 are deferred.
+
+10. **CamCatur Vision (phone) screens replace section 7:** pairing with a short-lived code; camera placement guide; board detection and manual corner adjustment; calibration confirmation; recognition monitor with confidence; exception review (confirm, reject, correct); battery, temperature, charging, storage and sync status; pending/synced/failed event counts. Design for one-handed use and a screen that may be locked or interrupted.
+11. **Two mobile surfaces, kept distinct:** CamCatur Vision (capture device) and CamCatur Arbiter (PWA first). Do not merge their navigation.

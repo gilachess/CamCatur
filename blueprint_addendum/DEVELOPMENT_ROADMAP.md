@@ -3,11 +3,13 @@
 **Status:** Proposed sequence — do not treat as a commitment to dates  
 **Date:** 10 November 2026
 
+> **Naming:** Addendum engineering stages are called **Stages 0-6** to avoid confusion with product phases (Phase 1-4) in `caturcam_research/`. **Sequencing note:** `RESEARCH_REVIEW.md` proposes running Stages 1-2 as a parallel feasibility track while the manual-mode platform and a design-partner event proceed (Track A).
+
 ## Guiding rule
 
 Prove the riskiest technical assumptions before building the full product. Do not begin by generating a large application scaffold and hoping that computer vision will work later.
 
-## Phase 0 — Research reconciliation
+## Stage 0 — Research reconciliation
 
 **Goal:** Understand the existing CamCatur research and identify which parts remain valid.
 
@@ -19,7 +21,7 @@ Tasks:
 - Record open questions and source links.
 
 Deliverables:
-- `RESEARCH_REVIEW.md`
+- `RESEARCH_REVIEW.md` (first draft provided on 10 November 2026; pending founder review)
 - Updated `README_BLUEPRINT_ADDENDUM.md`
 - Prioritised risk register.
 
@@ -27,7 +29,7 @@ Exit criteria:
 - No unresolved legacy platform assumption is silently carried into implementation.
 - Product scope and initial target devices are agreed.
 
-## Phase 1 — Mobile camera feasibility spike
+## Stage 1 — Mobile camera feasibility spike
 
 **Goal:** Prove reliable camera capture and calibration on real phones.
 
@@ -47,7 +49,7 @@ Exit criteria:
 - A phone can consistently locate and track a stationary board in the agreed test conditions.
 - Known limitations are documented.
 
-## Phase 2 — Recognition and chess-state feasibility
+## Stage 2 — Recognition and chess-state feasibility
 
 **Goal:** Convert board observations into a reliable move sequence.
 
@@ -69,7 +71,7 @@ Exit criteria:
 - Uncertain positions are flagged rather than silently committed.
 - A short game can be reconstructed into a valid PGN with correction support.
 
-## Phase 3 — Offline-first mobile game recorder
+## Stage 3 — Offline-first mobile game recorder
 
 **Goal:** Make one phone record a game robustly without depending on continuous connectivity.
 
@@ -89,7 +91,7 @@ Exit criteria:
 - A game survives app restart and temporary network loss.
 - Reconnection does not duplicate or corrupt moves.
 
-## Phase 4 — Backend and browser management MVP
+## Stage 4 — Backend and browser management MVP
 
 **Goal:** Manage a phone and game from a browser.
 
@@ -111,7 +113,7 @@ Exit criteria:
 - A phone can be paired, assigned to a game, record a game and synchronise it to the web platform.
 - Management works in supported browsers on Windows, macOS and Linux.
 
-## Phase 5 — Multi-board pilot
+## Stage 5 — Multi-board pilot
 
 **Goal:** Prove a small tournament deployment.
 
@@ -138,7 +140,7 @@ Exit criteria:
 - Pilot board count meets agreed recognition, sync and operator-workload targets.
 - Failure recovery is documented and tested.
 
-## Phase 6 — Broadcasting and production hardening
+## Stage 6 — Broadcasting and production hardening
 
 Tasks:
 - Add selected broadcast integrations.
@@ -155,7 +157,7 @@ Deliverables:
 
 ## Mandatory engineering gates
 
-At the end of each phase:
+At the end of each stage:
 - Demonstrate working software on real hardware.
 - Run repeatable tests.
 - Record measured results and known limitations.
