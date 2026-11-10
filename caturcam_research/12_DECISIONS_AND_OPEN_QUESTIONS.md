@@ -18,6 +18,10 @@
 | Development environment | Google Antigravity |
 | AI subscription | Google AI Pro |
 | Documentation location | `www/caturcam/research/` |
+| Chess/video separation | Confirmed game-event distribution remains independent from video ingest, recording and programme delivery |
+| Studio authority | Studio consumes confirmed game state; it cannot authorise or alter chess moves |
+| Initial production validation | Evaluate OBS browser overlays and selected camera inputs before considering a native compositor |
+| Video scope | Not part of Phase 1; requires production discovery and a separate pilot gate |
 
 ## 2. Recommended technical direction (subject to implementation validation)
 
@@ -50,6 +54,13 @@
 11. Billing, entitlements and white-label.
 12. Commercial beta and launch.
 
+After Phase 1 is stable:
+- Production workflow discovery with organisers and operators.
+- OBS Browser Source overlay prototype.
+- Selected camera input and one-programme-output pilot.
+- Video consent, retention and unit-economics validation.
+- Decide whether native CamCatur Studio is justified.
+
 ## 3A. v1.1 blocking decisions (resolve in week 1-2)
 
 | # | Decision | Owner | Due | Linked doc |
@@ -61,7 +72,7 @@
 | D5 | Pairing source: which software to import from | Founder | Week 2 | 13 |
 | D6 | Design partner event and date | Founder | Week 4 | 14 |
 
-## 3B. v1.1 decision log entries
+## 3B. v1.1 and v1.2 decision log entries
 
 ```text
 Decision ID: ADR-001   Date: 2026-11-10   Status: Proposed
@@ -82,6 +93,24 @@ Decision: 4-week feasibility spike precedes Phase 2 commitments; Go/No-go gate.
 Decision ID: ADR-004   Date: 2026-11-10   Status: Proposed
 Topic: MoveSource abstraction
 Decision: All input (manual, PGN, DGT, camera) enters through one authoritative ingestion path.
+
+Decision ID: ADR-005   Date: 2026-11-10   Status: Proposed
+Topic: Separate chess broadcast and video media architecture
+Decision: Keep confirmed chess-event distribution independent from video
+          ingest, media storage, programme composition and external streaming.
+Reason: Different data, scaling, reliability, privacy and cost requirements.
+Impact: Studio consumes confirmed game state through a presentation interface;
+        it does not become authoritative for moves.
+Revisit trigger: Production discovery and a real event pilot.
+
+Decision ID: ADR-006   Date: 2026-11-10   Status: Proposed
+Topic: Initial video production integration
+Decision: Evaluate OBS Studio with CamCatur browser overlays before building
+          a native compositor or encoder.
+Reason: Validate operator workflows and willingness to pay before assuming
+        the engineering and support burden of production software.
+Impact: OBS remains an optional external production tool during the pilot.
+Revisit trigger: Customer evidence shows limitations that justify native Studio.
 ```
 
 ## 4. Open decisions to resolve before implementation
@@ -117,6 +146,21 @@ Decision: All input (manual, PGN, DGT, camera) enters through one authoritative 
 - Is engine analysis public, organiser-only or disabled during live play?
 - Which external platforms are priorities?
 - Is video streaming part of the first commercial release or a later add-on?
+
+### Video and production (resolve during discovery, not Phase 1)
+
+- Is the primary need one tournament-wide programme, featured-board coverage,
+  individual board streams, or a combination?
+- How many cameras are available and who owns/operates them?
+- Is OBS acceptable to target production operators?
+- Is browser-overlay-only integration sufficient initially?
+- Is remote scene control required?
+- Are commentary and audio mixing required?
+- Which destinations are priorities (YouTube Live, Twitch or others)?
+- Are recordings required, and who owns/retains them?
+- What are acceptable video quality, latency and synchronisation targets?
+- Who obtains consent and handles deletion/takedown requests?
+- What pricing covers media ingest, output, storage, egress and support?
 
 ### Commercial
 - Monthly subscription, per-event fee or both?

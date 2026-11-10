@@ -12,6 +12,9 @@
 - Keep camera inference local to Windows where practical.
 - Use versioned, documented contracts between clients and services.
 - Do not let desktop agents write directly to the production database.
+- Keep structured chess-event delivery separate from video/media delivery.
+- Keep the confirmed game service authoritative; production tools consume confirmed game state and must not write authoritative moves.
+- Design future media ingest, composition, recording and external streaming as independently scalable capabilities.
 
 ## 2. Recommended technology stack
 
@@ -71,6 +74,22 @@ CLIENTS
                           |
               Web / Mobile / Embeds / OBS
 ```
+
+### Future media and production boundary
+
+```text
+Confirmed game state --> Game presentation API --> 2D board/overlay
+                                                       |
+Physical camera --> Media source/ingest --------------+
+                                                       |
+                                             CamCatur Studio
+                                                       |
+                                             Programme encoder
+                                                       |
+                                           External streaming platform
+```
+
+Do not route video through the game-event pipeline. Do not make the game service depend on OBS, a media encoder or a streaming destination. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.
 
 ## 4. Windows vision path
 
@@ -144,6 +163,12 @@ Broadcast sessions, game subscriptions, publication delay, visibility, public pa
 ### Media module
 Video sources, recordings, assets, sponsor logos and storage metadata.
 
+### CamCatur Video (future)
+Media ingest and distribution: Authenticate, ingest and serve authorised physical camera streams; manage recording storage.
+
+### CamCatur Studio (future)
+Production workflow: Combine selected media, confirmed 2D graphics, commentary and branding into a programme output.
+
 ### Billing module
 Plans, subscriptions, entitlements, usage, invoices and payment webhooks.
 
@@ -189,3 +214,6 @@ Estimated chess event load at 100 boards, one move per ~45 seconds per board, is
 
 ### 9.4 Runtime count for the Windows agent (Phase 2)
 Tauri + Python sidecar + ONNX Runtime is three runtimes for one solo developer. During the CV spike, evaluate a simpler alternative (single Python process with a local web UI, or a single-language agent) and choose based on installer reliability on target Windows machines, not on architectural elegance.
+
+### 9.5 Video and production exclusions
+Video, OBS integration, recording and native composition are excluded from Phase 1. CamCatur Live delivers structured chess events to interactive 2D browser views only. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.

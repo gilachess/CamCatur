@@ -8,6 +8,8 @@ Deliver live games from many boards through one tournament broadcast experience,
 
 Game events, spectator connections and video streams are different workloads. Measure and scale them independently.
 
+- Keep 2D chess-event broadcasting separate from physical video delivery. Chess fans and arbiters need low-latency, low-bandwidth moves and clocks. Video is a high-bandwidth, separately authored workload for a subset of viewers. Do not combine them into one protocol. See document 16.
+
 ## 2. Event flow
 
 ```text
@@ -159,13 +161,15 @@ Measure:
 - CPU, memory and network traffic.
 - Snapshot/replay duration.
 - Video bandwidth separately from chess event bandwidth.
+- If video is piloted, separately measure camera-hours, source bitrate, programme outputs, recording storage, viewer-hours, egress and production workstation load. Do not infer video capacity from chess-event load tests.
 
 Initial proposed target: confirmed move propagation P95 under one second under the agreed test profile. This is a target, not a guarantee.
 
-## 8. v1.1 Phase 1 transport and spectator fan-out
+## 10. v1.1 Phase 1 transport and spectator fan-out
 
 - **Ingestion** is low volume (see doc 02 section 9.1); use the Postgres events table with a per-game unique `(game_id, sequence)` constraint to enforce ordering and idempotency.
 - **Fan-out** is the scaling risk. Serve public game state as cacheable snapshots plus an incremental feed keyed by last-seen sequence. Prefer SSE or a managed pub/sub in front of a CDN over per-viewer database reads.
+- **Production overlays** use the same confirmed game state API or websocket/SSE subscription as spectator views. Overlays must not bypass the authoritative delay or access unconfirmed move states. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.
 - **Delay enforcement:** compute a `public_release_at` timestamp server-side per event; public endpoints return only events whose release time has passed. Add a test that proves clients cannot obtain undelayed events from public endpoints.
 - **Find-my-board:** the public API must support lookup by player name (with privacy controls for minors, see doc 15) and return board number, opponent, round, result and a deep link.
 - **Load test the spectator path first** (1,000 then 5,000 concurrent viewers on a tournament page), because it is likely to fail before ingestion does.

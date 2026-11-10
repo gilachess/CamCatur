@@ -38,6 +38,16 @@ The platform combines:
 13. `13_MARKET_AND_USER_VALIDATION.md` (v1.1)
 14. `14_MVP_SCOPE_AND_90_DAY_PLAN.md` (v1.1)
 15. `15_USER_FLOWS_AND_VENUE_UX.md` (v1.1)
+16. `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md` (v1.2 — Future architecture for CamCatur Video and CamCatur Studio, including OBS overlay integration, programme composition, external streaming, synchronisation, recording, privacy and media economics)
+
+## v1.2 changes (10 November 2026)
+
+- Clarifies CamCatur Live (2D chess broadcast), CamCatur Video (physical camera media) and CamCatur Studio (combined production workflow).
+- Adds document 16 for future video and production architecture.
+- Keeps Phase 1 unchanged: tournament operations, manual game entry and CamCatur Live 2D broadcast.
+- Establishes a proposed OBS-first validation path before native compositor/encoder investment.
+- Separates chess-event traffic from video ingest, recording, processing and delivery.
+- Adds video-specific synchronisation, privacy, consent and unit-economics requirements.
 
 ## v1.1 changes (10 November 2026)
 

@@ -36,6 +36,7 @@ Comprehensive architecture, schema specifications, and development roadmaps are 
 13. [Market & User Validation](./caturcam_research/13_MARKET_AND_USER_VALIDATION.md)
 14. [MVP Scope & 90-Day Plan](./caturcam_research/14_MVP_SCOPE_AND_90_DAY_PLAN.md)
 15. [User Flows & Venue UX](./caturcam_research/15_USER_FLOWS_AND_VENUE_UX.md)
+16. [Broadcast Studio & Video Architecture](./caturcam_research/16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md)
 
 ---
 

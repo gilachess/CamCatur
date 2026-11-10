@@ -106,6 +106,18 @@ Implement:
 
 Review applicable Malaysian privacy law and any other jurisdictions where customers or players are located. Obtain legal advice on obligations, cross-border processing and retention.
 
+### Additional controls for live video and recordings
+
+- Treat live footage and recordings as personal data where people can be identified directly or indirectly.
+- Define who is responsible for venue notices and required permissions or consent before capture and publication.
+- Provide camera placement/framing guidance to reduce unnecessary capture of children, spectators and bystanders.
+- Make visibility explicit: private, organisation-only, unlisted or public.
+- Restrict raw source footage and recording access separately from public chess game access.
+- Define retention periods, deletion workflow and incident response before recording is enabled.
+- Do not make public video or recording the default for junior events.
+- Do not introduce facial recognition or identity inference in production.
+- Obtain jurisdiction-specific legal review before pilots and release.
+
 ## 7. Security baseline
 
 - MFA for privileged users.
@@ -152,6 +164,12 @@ The pricing in section 2 covers software only. Per-event economics must include:
 - **Payment and tax costs** for the chosen Malaysian provider.
 
 Create a per-event unit-economics sheet (revenue, hardware amortisation, support hours, cloud cost, margin) for a 20, 50 and 100 board event. Do not publish prices until it shows a margin at each size.
+
+### Video-specific cost accounting (future phase)
+
+Track camera-hours and source bitrate; media ingest and processing cost; simultaneous programme outputs; recording hours and retained storage; viewer-hours and delivery/egress; production workstation hardware/network; and production operator/support hours.
+
+Do not price video solely by board count. One composed tournament programme using selected cameras has a different cost profile from one independent video stream per board. Recording and public streaming may need separate entitlements or event charges.
 
 ## 9. v1.1 Safeguarding and privacy (junior events)
 

@@ -15,10 +15,14 @@ The product should be designed as five connected applications:
 | Tournament Control Centre | Web | Organisers, administrators | Manage organisations, events, players, rounds, pairings and results |
 | ChessVision Agent | Windows | Camera operators | Connect cameras, calibrate boards, recognise moves and buffer events offline |
 | CamCatur Mobile | Android | Arbiters, organisers | Monitor boards, correct games, submit results and receive alerts |
-| CamCatur Live | Web/mobile browser | Players, families, spectators | Follow live games, standings and tournament information |
-| Broadcast Studio | Web/Windows integrations | Commentators, production operators | Featured games, overlays, sponsor graphics and video distribution |
+| CamCatur Live | Web/mobile browser | Players, families, spectators | Interactive 2D boards, move lists, player/game information, standings and tournament pages |
+| CamCatur Studio | Web/Windows integrations (later phase) | Commentators, production operators | Combine selected physical camera feeds, confirmed 2D chess graphics, tournament information, commentary and sponsor graphics into a programme output |
 
 The official product brand and platform name is **CamCatur**.
+
+**Capability boundary:** CamCatur Live distributes structured chess data and interactive 2D game views. CamCatur Video handles physical camera media. CamCatur Studio combines selected media and confirmed game presentation data for a produced programme. These are separate capabilities and workloads. See `16_BROADCAST_STUDIO_AND_VIDEO_ARCHITECTURE.md`.
+
+Studio and Video are not part of the Phase 1 MVP.
 
 ## 2. Target customers
 
@@ -121,6 +125,17 @@ These are engineering targets, not proven capacity or service-level guarantees. 
 - Optional external streaming platform integration.
 - White-label tournament domains and themes.
 
+### Future video and production requirements (not Phase 1)
+- Register and monitor authorised physical camera sources.
+- Associate sources with a venue, board or production role.
+- Render a browser-based overlay for a selected confirmed game.
+- Combine selected camera footage, 2D board graphics, tournament information and sponsor assets in a production workflow.
+- Evaluate an OBS-first integration before native composition.
+- Support external streaming destinations through adapters.
+- Treat recording as a separately authorised and scoped capability.
+- Apply source access controls, consent, retention and deletion policies.
+See document 16.
+
 ### Commercial features
 - Plans and entitlements.
 - Monthly subscriptions and per-event fees.
@@ -190,7 +205,8 @@ Define and instrument from the first pilot:
 ### 9.4 Requirement tiering
 - **MVP (Phase 1):** organisation/auth, tournament/sections/rounds/players, pairing import, manual game entry, public live page with find-my-board search, PGN export, server-side delay, arbiter PWA, audit trail.
 - **Phase 2:** camera feasibility result, ChessVision Agent beta, offline queue, exception triage, DGT evaluation, Lichess broadcast adapter.
-- **Later:** native Android, billing automation, white-label domains, OBS/sponsor suite, video recording/streaming, AI reports, analytics.
+- **Later:** native Android, billing automation, white-label domains, advanced OBS/Studio controls, sponsor suite, multi-source video production, video recording/streaming, AI reports and analytics.
+- **Production discovery (after Phase 1 live workflow is stable):** validate OBS browser overlays and selected camera inputs with real organisers and operators. This is discovery, not a commitment to build a native compositor.
 
 ### 9.5 Hardware and venue assumptions to document
 Camera model(s), mount type and height, board size, lighting, network at venue, who supplies hardware, and who provides on-site support. See doc 11 section 8.
