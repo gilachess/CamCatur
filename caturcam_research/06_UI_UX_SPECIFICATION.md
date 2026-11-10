@@ -1,5 +1,7 @@
 # 06 — UI/UX Specification
 
+> **v1.1 amendment:** This document lists screens and components. Venue workflows, exception handling, spectator needs and theming corrections are in Section 11 and in `15_USER_FLOWS_AND_VENUE_UX.md`. Section 11 wins on conflict.
+
 ## 1. Design direction
 
 Create a distinctive, professional chess-event operations product. A dark navy interface with a restrained cyan/teal accent is a starting direction, not a final brand identity.
@@ -189,3 +191,15 @@ Create reusable components:
 - The mobile app remains usable on a typical phone screen.
 - Keyboard and screen-reader users can operate core web flows.
 - Offline state is obvious and cannot be mistaken for successful cloud publication.
+
+## 11. v1.1 amendments
+
+1. **Theming:** the dark navy/cyan palette in section 1 applies to the **operations** surfaces (organiser dashboard, arbiter app, agent). The **public spectator site** must support light and dark, default to the user's system setting, and be validated for outdoor/bright-screen legibility. Verify contrast ratios (WCAG AA minimum) for all token pairs.
+2. **Exception-first control room:** the default board view is a triage list of boards needing attention, sorted by urgency, with the full grid as a secondary view. See doc 15 flow F3.
+3. **Setup at scale:** add batch workflows (QR-coded board labels, bulk camera-to-board assignment, calibration status wall, re-calibration queue). See doc 15 flow F2.
+4. **Find my board:** the public site's primary entry point for parents and players is search by player name or board number. Add to the public layout in section 6 as item 0, above the featured board.
+5. **Minors and privacy:** public player display must support initials/first-name-only/hidden modes per tournament, with organiser-controlled defaults appropriate for junior events.
+6. **Mobile-first public pages:** design public pages at 360px width first; the featured board and a single live game must be usable one-handed.
+7. **Degraded-state UX:** every operational screen needs explicit states for offline, delayed, stale (time since last update), and uncertain data, never relying on colour alone.
+8. **Usability testing:** each flow in doc 15 must be tested with at least 3 real arbiters/organisers before it is declared done, with task-completion time recorded.
+9. **Phase 1 arbiter app is a PWA** (see doc 02). Native Android screens in section 8 are deferred.

@@ -1,5 +1,7 @@
 # 02 — System Architecture
 
+> **v1.1 amendment:** Section 9 defines a **Phase 1 simplified stack**. NATS JetStream, Redis, Terraform-managed multi-service deployment and the native Android app are deferred until measured load or a decision-log entry justifies them. Sections 1-8 remain the long-term target.
+
 ## 1. Architecture principles
 
 - Use a modular monolith for the initial business API, with clear internal domain boundaries.
@@ -160,3 +162,30 @@ Do not assume a stateless serverless container is an appropriate host for a pers
 - Event consumers validate schema versions and tenant ownership.
 - Secrets are never embedded in desktop or Android binaries.
 - Use short-lived credentials and secure refresh/revocation patterns.
+
+## 9. v1.1 Phase 1 simplified stack
+
+### 9.1 Rationale
+Estimated chess event load at 100 boards, one move per ~45 seconds per board, is roughly 2-3 events/second (budget 10x for bursts at time controls and round starts). This does not need a distributed log. Spectator fan-out, not game ingestion, is the scaling concern.
+
+### 9.2 Phase 1 components
+| Concern | Phase 1 choice | Revisit when |
+|---|---|---|
+| Web + public pages | Next.js, TypeScript | n/a |
+| API | FastAPI modular monolith | Independent scaling/ownership needed |
+| Database | PostgreSQL only (events table with per-game sequence; outbox pattern) | Load tests show contention |
+| Event distribution to workers | Postgres outbox + LISTEN/NOTIFY or a simple worker poll | Consumer lag or replay needs exceed Postgres |
+| Spectator realtime | SSE or managed pub/sub behind CDN, with snapshot + last-seen-sequence resync | WebSocket features needed; test connection limits |
+| Cache | In-process / HTTP cache + CDN; add Redis only on measured need | Measured DB read pressure |
+| Arbiter app | Installable PWA (offline-tolerant manual entry, push where supported) | Native-only features required by pilot users |
+| Windows agent | Phase 2, gated by CV spike (doc 04 section 11) | n/a |
+| Infra as code | Docker Compose + minimal scripted deploy | Second environment or team grows |
+
+### 9.3 Design rules that survive the simplification
+- Keep the event envelope, idempotency, sequence numbers and snapshot/replay contract from doc 05 unchanged, so NATS can be introduced later without changing clients.
+- Put event publication behind an interface (`EventBus`) with a Postgres implementation now and a NATS implementation later.
+- Public spectator pages must be cacheable and must not hit the primary database per viewer.
+- Record each deferral and its trigger metric in the decision log (doc 12).
+
+### 9.4 Runtime count for the Windows agent (Phase 2)
+Tauri + Python sidecar + ONNX Runtime is three runtimes for one solo developer. During the CV spike, evaluate a simpler alternative (single Python process with a local web UI, or a single-language agent) and choose based on installer reliability on target Windows machines, not on architectural elegance.

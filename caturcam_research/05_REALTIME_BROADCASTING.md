@@ -1,5 +1,7 @@
 # 05 — Realtime Broadcasting and Event Contracts
 
+> **v1.1 amendment:** Section 8 (added) sets Phase 1 transport and fan-out guidance consistent with doc 02 section 9. The event contract in this document is unchanged.
+
 ## 1. Objective
 
 Deliver live games from many boards through one tournament broadcast experience, with reliable recovery and optional publication delay.
@@ -159,3 +161,12 @@ Measure:
 - Video bandwidth separately from chess event bandwidth.
 
 Initial proposed target: confirmed move propagation P95 under one second under the agreed test profile. This is a target, not a guarantee.
+
+## 8. v1.1 Phase 1 transport and spectator fan-out
+
+- **Ingestion** is low volume (see doc 02 section 9.1); use the Postgres events table with a per-game unique `(game_id, sequence)` constraint to enforce ordering and idempotency.
+- **Fan-out** is the scaling risk. Serve public game state as cacheable snapshots plus an incremental feed keyed by last-seen sequence. Prefer SSE or a managed pub/sub in front of a CDN over per-viewer database reads.
+- **Delay enforcement:** compute a `public_release_at` timestamp server-side per event; public endpoints return only events whose release time has passed. Add a test that proves clients cannot obtain undelayed events from public endpoints.
+- **Find-my-board:** the public API must support lookup by player name (with privacy controls for minors, see doc 15) and return board number, opponent, round, result and a deep link.
+- **Load test the spectator path first** (1,000 then 5,000 concurrent viewers on a tournament page), because it is likely to fail before ingestion does.
+- **Lichess Broadcast adapter** is a Phase 2 distribution option that can provide spectator reach before the platform's own page is at scale; keep it behind the adapter boundary described in section 8 of v1.0.

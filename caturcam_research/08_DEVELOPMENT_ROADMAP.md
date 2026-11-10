@@ -1,5 +1,7 @@
 # 08 — Development Roadmap
 
+> **v1.1 amendment:** The 12-month plan below is **superseded for planning purposes** by `14_MVP_SCOPE_AND_90_DAY_PLAN.md`. It is retained as the long-term feature sequence. Key changes: computer-vision feasibility starts in week 1, a design-partner event runs in manual mode by Month 3, and native Android, billing automation, white-label and video move after the first paid pilot.
+
 ## 1. Planning assumptions
 
 This is a proposed 12-month programme for a solo founder using AI coding agents, with external specialist/legal help as needed. It is not a guaranteed delivery estimate. Computer vision accuracy, camera hardware compatibility, mobile work and production operations are major schedule risks.
@@ -187,3 +189,25 @@ The highest-risk workstreams are:
 - Privacy and safeguarding for junior players.
 
 Maintain a risk register and review it at every milestone.
+
+## 7. v1.1 roadmap changes
+
+| Item in v1.0 | v1.1 change |
+|---|---|
+| Month 4: computer vision begins | CV feasibility spike in weeks 1-4 (doc 04 section 11); Go/No-go decides Phase 2 scope |
+| Month 7: Android arbiter app | Phase 1 PWA; native Android only on pilot evidence |
+| Month 9: billing integration | Manual invoicing until at least 10 paying customers or a clear billing pain |
+| Month 10: first real event | First real event (manual mode, design partner) by Month 3 |
+| Month 8: OBS/video/sponsors | After first paid pilot |
+| Month 11: 250-board expansion tests | Only after 100-board test passes and demand justifies |
+
+### Added risks
+- No validated differentiator (mitigation: doc 13).
+- Solo-founder overload (mitigation: strict Phase 1 scope, weekly scope review).
+- Hardware logistics and on-site support cost (mitigation: doc 11 section 8).
+- Reliance on AI-generated code without review (mitigation: tests-first on chess, event and tenant code).
+
+### Governance
+- Weekly 30-minute review: progress vs plan, top 3 risks, scope changes. Record scope additions in the decision log.
+- **Scope rule:** nothing enters Phase 1 unless something of equal size leaves it.
+- Each phase ends with a demo to the design partner and a written go/no-go.

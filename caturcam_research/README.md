@@ -1,7 +1,7 @@
 # CaturCam Research — Commercial Chess Tournament Platform Blueprint
 
-**Document set:** Product and technical blueprint v1.0  
-**Date:** 9 November 2026  
+**Document set:** Product and technical blueprint v1.1 (supersedes v1.0 where noted)  
+**Date:** 10 November 2026  
 **Working codename:** ChessArena (temporary; not a cleared brand)  
 **Target platforms:** Windows, Android, Web  
 **Initial broadcast scale:** 50–100 boards  
@@ -35,6 +35,17 @@ The platform combines:
 10. `10_CLOUD_DEPLOYMENT_AND_OPERATIONS.md`
 11. `11_COMMERCIAL_SECURITY_AND_COMPLIANCE.md`
 12. `12_DECISIONS_AND_OPEN_QUESTIONS.md`
+13. `13_MARKET_AND_USER_VALIDATION.md` (v1.1)
+14. `14_MVP_SCOPE_AND_90_DAY_PLAN.md` (v1.1)
+15. `15_USER_FLOWS_AND_VENUE_UX.md` (v1.1)
+
+## v1.1 changes (10 November 2026)
+
+A product and project-management review found that v1.0 was technically strong but (a) had no market validation or defined differentiator, (b) scoped five applications for a solo founder, (c) scheduled the highest-risk work (computer vision) late, and (d) described screens rather than venue workflows. v1.1 adds documents 13-15 and amends 01, 02, 04, 05, 06, 08, 11 and 12. **Where an amendment conflicts with earlier text, the amendment wins.** Phase 1 scope is defined in `14_MVP_SCOPE_AND_90_DAY_PLAN.md`; everything outside it is deferred, not deleted.
+
+## Naming rule
+
+Several names appear in this repository (idChess, ChessZCam, CaturCam, ChessArena). Until a brand is cleared: **CaturCam** is the repository/working name, **ChessArena** is a placeholder for UI copy only, and competitor names appear only in market-research documents. Do not copy competitor UI, assets, copy or trade dress.
 
 ## Important project rules
 

@@ -33,6 +33,9 @@ Comprehensive architecture, schema specifications, and development roadmaps are 
 10. [Cloud Deployment & Operations](./caturcam_research/10_CLOUD_DEPLOYMENT_AND_OPERATIONS.md)
 11. [Commercial Security & Compliance](./caturcam_research/11_COMMERCIAL_SECURITY_AND_COMPLIANCE.md)
 12. [Architectural Decisions & Open Questions](./caturcam_research/12_DECISIONS_AND_OPEN_QUESTIONS.md)
+13. [Market & User Validation](./caturcam_research/13_MARKET_AND_USER_VALIDATION.md)
+14. [MVP Scope & 90-Day Plan](./caturcam_research/14_MVP_SCOPE_AND_90_DAY_PLAN.md)
+15. [User Flows & Venue UX](./caturcam_research/15_USER_FLOWS_AND_VENUE_UX.md)
 
 ---
 

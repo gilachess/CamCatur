@@ -1,5 +1,7 @@
 # 01 — Product Vision and Requirements
 
+> **v1.1 amendment:** See Section 9 at the end for the positioning requirement, MoveSource abstraction, success metrics and MVP/Later tiering. The five-application structure above is the long-term vision; Phase 1 builds only what `14_MVP_SCOPE_AND_90_DAY_PLAN.md` lists.
+
 ## 1. Product vision
 
 Build a commercial, multi-tenant chess tournament operating and broadcasting platform for clubs, schools, academies, event organisers and chess federations.
@@ -151,3 +153,44 @@ These are engineering targets, not proven capacity or service-level guarantees. 
 6. Spectator delivery must not depend on the organiser dashboard staying open.
 7. Organisations own their tournament data, subject to contract and applicable law.
 8. Design for 200+ boards, but operate only the infrastructure needed for current customers.
+
+## 9. v1.1 amendments
+
+### 9.1 Positioning (must be completed before Month 2)
+The vision above is a feature list. Complete this statement using evidence from `13_MARKET_AND_USER_VALIDATION.md`:
+
+> For **[primary segment]** who **[core pain]**, CaturCam is a **[category]** that **[key benefit]**. Unlike **[named alternative]**, we **[specific differentiator proven in interviews]**.
+
+Candidate wedges to test (choose one, do not pursue all):
+1. School and club tournaments in Malaysia/Southeast Asia: low cost, parent-friendly spectator experience, simple arbiter workflow.
+2. Organisers who already own DGT electronic boards and need better broadcast and management.
+3. Regional federations needing reliable multi-board broadcast with local payment and support.
+
+### 9.2 MoveSource abstraction
+Game input is a pluggable **MoveSource**, not a camera feature. All sources submit candidate events to the same authoritative ingestion path (doc 05):
+
+| MoveSource | Phase | Notes |
+|---|---|---|
+| Manual entry (web/PWA) | 1 | Baseline; always available as fallback |
+| PGN/file import | 1 | Pairing/result import and game archives |
+| DGT electronic board | 2 (evaluate) | Existing hardware, lowest recognition risk; verify SDK/protocol terms |
+| Camera (ChessVision Agent) | 2-3, gated by feasibility spike | See doc 04 |
+| Third-party feeds | Later | Adapters only |
+
+### 9.3 Product success metrics
+Define and instrument from the first pilot:
+- **Interventions per 100 confirmed moves** (north star for vision-assisted boards).
+- **False-confirmation rate** (target zero; any occurrence is a Sev-1 review).
+- **Setup time per board** (camera placed, calibrated, assigned) and per 50 boards.
+- **Time from move made to public display** (P50/P95).
+- **Arbiter tasks completed without leaving the exception queue.**
+- **Spectator: time to find a specific player's game.**
+- **Commercial:** events run, paid events, repeat-organiser rate, support hours per event.
+
+### 9.4 Requirement tiering
+- **MVP (Phase 1):** organisation/auth, tournament/sections/rounds/players, pairing import, manual game entry, public live page with find-my-board search, PGN export, server-side delay, arbiter PWA, audit trail.
+- **Phase 2:** camera feasibility result, ChessVision Agent beta, offline queue, exception triage, DGT evaluation, Lichess broadcast adapter.
+- **Later:** native Android, billing automation, white-label domains, OBS/sponsor suite, video recording/streaming, AI reports, analytics.
+
+### 9.5 Hardware and venue assumptions to document
+Camera model(s), mount type and height, board size, lighting, network at venue, who supplies hardware, and who provides on-site support. See doc 11 section 8.

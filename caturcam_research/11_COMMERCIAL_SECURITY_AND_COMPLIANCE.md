@@ -141,3 +141,21 @@ Before commercial release:
 - Tournament operator guide.
 - Security contact and vulnerability handling.
 - Release and rollback process.
+
+## 8. v1.1 Hardware, services and unit economics
+
+The pricing in section 2 covers software only. Per-event economics must include:
+- **Hardware:** cameras, mounts/stands, cables, PC or mini-PC per operator station, spare units, labels.
+- **Hardware model options to test:** customer-owned; rented kit per event; bundled kit with the event fee.
+- **On-site support:** setup time, operator training, staffing during rounds, travel.
+- **Cloud and bandwidth:** per board-hour and per viewer-hour; video separately.
+- **Payment and tax costs** for the chosen Malaysian provider.
+
+Create a per-event unit-economics sheet (revenue, hardware amortisation, support hours, cloud cost, margin) for a 20, 50 and 100 board event. Do not publish prices until it shows a margin at each size.
+
+## 9. v1.1 Safeguarding and privacy (junior events)
+
+- Default public display of minors to initials or first name; organiser must opt in to full names.
+- No public camera or video of players without a documented consent process.
+- Retention limits for footage, frames and images, with deletion on request where applicable.
+- Document the legal basis and notices under Malaysian data protection requirements and any applicable federation or school rules; obtain local legal advice before the pilot.

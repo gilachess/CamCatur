@@ -50,6 +50,40 @@
 11. Billing, entitlements and white-label.
 12. Commercial beta and launch.
 
+## 3A. v1.1 blocking decisions (resolve in week 1-2)
+
+| # | Decision | Owner | Due | Linked doc |
+|---|---|---|---|---|
+| D1 | Primary customer segment and positioning statement | Founder | Week 3 | 01 s9.1, 13 |
+| D2 | CV build vs license vs no-camera | Founder + legal | Week 2 | 04 s11.3 |
+| D3 | DGT support: evaluate or exclude | Founder | Week 4 | 04 s11.5 |
+| D4 | First camera model(s) and mount for the spike | Founder | Week 1 | 04 s11.1 |
+| D5 | Pairing source: which software to import from | Founder | Week 2 | 13 |
+| D6 | Design partner event and date | Founder | Week 4 | 14 |
+
+## 3B. v1.1 decision log entries
+
+```text
+Decision ID: ADR-001   Date: 2026-11-10   Status: Proposed
+Topic: Phase 1 stack simplification
+Decision: Postgres-only eventing behind an EventBus interface; defer NATS and Redis.
+Reason: Estimated 2-3 events/s at 100 boards; operational burden of JetStream not justified yet.
+Revisit trigger: consumer lag, replay needs or load-test failure.
+
+Decision ID: ADR-002   Date: 2026-11-10   Status: Proposed
+Topic: Arbiter app platform
+Decision: PWA first; native Android deferred.
+Revisit trigger: pilot users require native-only features (background scanning, reliable push).
+
+Decision ID: ADR-003   Date: 2026-11-10   Status: Proposed
+Topic: Vision sequencing
+Decision: 4-week feasibility spike precedes Phase 2 commitments; Go/No-go gate.
+
+Decision ID: ADR-004   Date: 2026-11-10   Status: Proposed
+Topic: MoveSource abstraction
+Decision: All input (manual, PGN, DGT, camera) enters through one authoritative ingestion path.
+```
+
 ## 4. Open decisions to resolve before implementation
 
 ### Brand
