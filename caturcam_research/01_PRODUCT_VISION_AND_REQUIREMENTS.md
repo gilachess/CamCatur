@@ -14,11 +14,11 @@ The product should be designed as five connected applications:
 |---|---|---|---|
 | Tournament Control Centre | Web | Organisers, administrators | Manage organisations, events, players, rounds, pairings and results |
 | ChessVision Agent | Windows | Camera operators | Connect cameras, calibrate boards, recognise moves and buffer events offline |
-| ChessArena Mobile | Android | Arbiters, organisers | Monitor boards, correct games, submit results and receive alerts |
-| ChessArena Live | Web/mobile browser | Players, families, spectators | Follow live games, standings and tournament information |
+| CamCatur Mobile | Android | Arbiters, organisers | Monitor boards, correct games, submit results and receive alerts |
+| CamCatur Live | Web/mobile browser | Players, families, spectators | Follow live games, standings and tournament information |
 | Broadcast Studio | Web/Windows integrations | Commentators, production operators | Featured games, overlays, sponsor graphics and video distribution |
 
-The final product brand must be newly created and checked for domain, trademark and company-name conflicts. “ChessArena” is a temporary codename only.
+The official product brand and platform name is **CamCatur**.
 
 ## 2. Target customers
 
@@ -159,7 +159,7 @@ These are engineering targets, not proven capacity or service-level guarantees. 
 ### 9.1 Positioning (must be completed before Month 2)
 The vision above is a feature list. Complete this statement using evidence from `13_MARKET_AND_USER_VALIDATION.md`:
 
-> For **[primary segment]** who **[core pain]**, CaturCam is a **[category]** that **[key benefit]**. Unlike **[named alternative]**, we **[specific differentiator proven in interviews]**.
+> For **[primary segment]** who **[core pain]**, CamCatur is a **[category]** that **[key benefit]**. Unlike **[named alternative]**, we **[specific differentiator proven in interviews]**.
 
 Candidate wedges to test (choose one, do not pursue all):
 1. School and club tournaments in Malaysia/Southeast Asia: low cost, parent-friendly spectator experience, simple arbiter workflow.

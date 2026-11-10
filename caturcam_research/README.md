@@ -1,8 +1,8 @@
-# CaturCam Research — Commercial Chess Tournament Platform Blueprint
+# CamCatur Research — Commercial Chess Tournament Platform Blueprint
 
 **Document set:** Product and technical blueprint v1.1 (supersedes v1.0 where noted)  
 **Date:** 10 November 2026  
-**Working codename:** ChessArena (temporary; not a cleared brand)  
+**Official brand:** CamCatur  
 **Target platforms:** Windows, Android, Web  
 **Initial broadcast scale:** 50–100 boards  
 **Expansion design target:** 200–250+ boards, with spectator scale tested separately
@@ -45,7 +45,7 @@ A product and project-management review found that v1.0 was technically strong b
 
 ## Naming rule
 
-Several names appear in this repository (idChess, ChessZCam, CaturCam, ChessArena). Until a brand is cleared: **CaturCam** is the repository/working name, **ChessArena** is a placeholder for UI copy only, and competitor names appear only in market-research documents. Do not copy competitor UI, assets, copy or trade dress.
+The official brand and product name is **CamCatur**. Competitor names appear only in market-research and teardown documents. Do not copy competitor UI, assets, copy or trade dress.
 
 ## Important project rules
 
@@ -57,13 +57,13 @@ Several names appear in this repository (idChess, ChessZCam, CaturCam, ChessAren
 - Make event handlers idempotent and support reconnection, replay and reconciliation.
 - Do not incorporate third-party source code, models, model weights or datasets until their exact licences and commercial-use conditions have been reviewed.
 - Do not assume Google AI Pro includes production Google Cloud infrastructure or usage credits.
-- ChessArena is only a working codename. Choose and clear the final brand separately.
+- **CamCatur** is the official product and brand name across all applications, documents, and interfaces.
 
 ## Intended repository placement
 
 Copy this folder's Markdown files into:
 
-`www/caturcam/research/`
+`www/catur.org/cam/caturcam_research/`
 
 The ZIP archive can be extracted directly into that directory.
 

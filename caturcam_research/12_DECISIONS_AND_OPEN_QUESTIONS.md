@@ -5,8 +5,8 @@
 | Decision | Current choice |
 |---|---|
 | Product category | Commercial chess tournament management and broadcasting SaaS |
-| Brand | Completely new brand; not yet selected or cleared |
-| Working codename | ChessArena (temporary only) |
+| Brand | CamCatur |
+| Product name | CamCatur |
 | Platforms | Windows, Android and web |
 | Initial board scale | 50–100 simultaneous boards |
 | Expansion target | 200–250+ boards |
